@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Job | Dashboard{% endblock %}
+
+{% block content %}
+<section class="dashboard-section">
+    <div class="container">
+        <div class="career-form-wrapper">
+            <h2>Delete Job Opening</h2>
+            <p>Are you sure you want to delete <strong>{{ job.title }}</strong>?</p>
+
+            <form method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Yes, Delete</button>
+                <a href="{% url 'dashboard_job_openings' %}" class="btn btn-outline">Cancel</a>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

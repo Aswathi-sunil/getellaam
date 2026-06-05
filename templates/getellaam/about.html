@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About | Getellaam{% endblock %}
+{% block content %}
+<section class="neo-page-hero inner-3d-scene">
+    <div class="scene-orb orb-a"></div><div class="scene-orb orb-b"></div>
+    <div class="container neo-page-grid">
+        <div class="neo-page-copy" data-aos="fade-right">
+            <span class="eyebrow"><i class="fa-solid fa-sparkles"></i> About Getellaam</span>
+            <h1>Creative strategy, sharp design and reliable technology under one roof.</h1>
+            <p>We help businesses move from basic online presence to a polished digital brand with websites, software, marketing and visual communication that feel trustworthy from the first click.</p>
+        </div>
+        <div class="neo-visual-card floating-3d" data-aos="zoom-in">
+            <img src="{% static 'images/about.jpg' %}" alt="About Getellaam">
+            <div class="glass-chip chip-top"><i class="fa-solid fa-code"></i> Design + Development</div>
+            <div class="glass-chip chip-bottom"><i class="fa-solid fa-chart-line"></i> Growth focused</div>
+        </div>
+    </div>
+</section>
+<section class="neo-section">
+    <div class="container split-grid premium-about-grid">
+        <div class="section-copy reveal-3d">
+            <span class="section-kicker">Who we are</span>
+            <h2>{% if company and company.about_title %}{{ company.about_title }}{% else %}A digital company built for modern businesses.{% endif %}</h2>
+            <p>{% if company and company.about_description %}{{ company.about_description }}{% else %}Getellaam is a creative digital agency focused on web development, branding, performance marketing and custom business solutions.{% endif %}</p>
+            <div class="neo-check-list">
+                <div><i class="fa-solid fa-circle-check"></i> Premium websites that improve brand trust</div>
+                <div><i class="fa-solid fa-circle-check"></i> Scalable web applications and business tools</div>
+                <div><i class="fa-solid fa-circle-check"></i> Digital campaigns planned around real outcomes</div>
+            </div>
+        </div>
+        <div class="mission-stack reveal-3d">
+            <div class="mission-card depth-card"><span>01</span><h3>Strategy</h3><p>We understand the business first, then define the right digital direction.</p></div>
+            <div class="mission-card depth-card"><span>02</span><h3>Design</h3><p>We create clean, attractive and conversion-focused visual experiences.</p></div>
+            <div class="mission-card depth-card"><span>03</span><h3>Technology</h3><p>We build fast, responsive and manageable solutions for long-term use.</p></div>
+        </div>
+    </div>
+</section>
+<section class="neo-dark-band">
+    <div class="container">
+        <div class="section-heading center-heading"><span class="section-kicker">Why choose us</span><h2>Everything your brand needs to look serious online.</h2><p>From idea to launch, we keep the experience premium, practical and performance focused.</p></div>
+        <div class="neo-feature-grid">
+            <div class="neo-feature-card depth-card"><i class="fa-solid fa-lightbulb"></i><h3>Creative Solutions</h3><p>Fresh ideas tailored to your business goals and audience.</p></div>
+            <div class="neo-feature-card depth-card"><i class="fa-solid fa-layer-group"></i><h3>Premium UI</h3><p>Modern layouts, animations and visual hierarchy that feel professional.</p></div>
+            <div class="neo-feature-card depth-card"><i class="fa-solid fa-rocket"></i><h3>Growth Driven</h3><p>Design and content decisions built to generate better leads.</p></div>
+        </div>
+    </div>
+</section>
+{% endblock %}

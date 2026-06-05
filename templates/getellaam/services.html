@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Services | Getellaam{% endblock %}
+{% block content %}
+<section class="neo-page-hero inner-3d-scene"><div class="scene-orb orb-a"></div><div class="scene-orb orb-b"></div><div class="container neo-page-center" data-aos="fade-up"><span class="eyebrow"><i class="fa-solid fa-cubes"></i> Our Services</span><h1>Digital services designed to make your brand look premium and perform better.</h1><p>Choose from websites, web apps, branding, marketing and custom software solutions built with a professional production-level finish.</p></div></section>
+<section class="neo-section"><div class="container"><div class="services-grid neo-services-grid">
+{% for service in all_services %}
+    <div class="service-card neo-service-card depth-card reveal-3d">
+        <div class="service-icon"><i class="{{ service.icon_class }}"></i></div>
+        <span class="service-number">0{{ forloop.counter }}</span>
+        <h3>{{ service.title }}</h3><p>{{ service.short_description }}</p>
+        <a href="{% url 'service_detail' service.slug %}" class="card-link">Explore Service <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+{% empty %}
+    <div class="service-card neo-service-card depth-card"><div class="service-icon"><i class="fa-solid fa-code"></i></div><h3>No services added yet</h3><p>Please add your services from admin.</p></div>
+{% endfor %}
+</div></div></section>
+<section class="neo-cta-strip"><div class="container cta-grid"><div><span class="section-kicker">Need clarity?</span><h2>We can help you choose the right digital solution.</h2><p>Share your requirement and we will suggest the best website, software or marketing approach.</p></div><a href="{% url 'contact' %}" class="btn btn-primary">Request Consultation</a></div></section>
+{% endblock %}

@@ -1,0 +1,319 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Getellaam | Web Design, Software & Digital Growth Company{% endblock %}
+
+{% block content %}
+
+<section class="home-hero">
+    <div class="hero-orb hero-orb-one"></div>
+    <div class="hero-orb hero-orb-two"></div>
+    <div class="container hero-shell">
+        <div class="hero-copy" data-aos="fade-right">
+            <span class="eyebrow"><i class="fa-solid fa-bolt"></i> Digital products, websites & growth systems</span>
+            <h1>
+    We build digital experiences that grow brands.
+</h1>
+            <p>
+                Getellaam helps brands launch modern websites, business software, e-commerce platforms,
+                mobile-ready experiences and digital marketing systems built for real growth.
+            </p>
+            <div class="hero-actions">
+                <a href="{% url 'contact' %}" class="btn btn-primary">Start a Project <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="{% url 'portfolio' %}" class="btn btn-glass">Explore Work</a>
+            </div>
+            <div class="hero-proof">
+                <div><strong>500+</strong><span>Brands & partners</span></div>
+                <div><strong>360°</strong><span>Digital support</span></div>
+                <div><strong>Kerala</strong><span>Based, global mindset</span></div>
+            </div>
+        </div>
+
+        <div class="hero-visual" data-aos="fade-left">
+            <div class="dashboard-card main-dashboard">
+                <div class="dashboard-top"><span></span><span></span><span></span></div>
+                <div class="dashboard-content">
+                    <div class="growth-card">
+                        <p>Project Growth</p>
+                        <h3>+84%</h3>
+                        <div class="growth-line"></div>
+                    </div>
+                    <div class="mini-grid">
+                        <div><i class="fa-solid fa-code"></i><span>Web</span></div>
+                        <div><i class="fa-solid fa-mobile-screen"></i><span>Apps</span></div>
+                        <div><i class="fa-solid fa-bullhorn"></i><span>Marketing</span></div>
+                        <div><i class="fa-solid fa-layer-group"></i><span>Branding</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="floating-card floating-card-one"><i class="fa-solid fa-shield-halved"></i> Secure & scalable</div>
+            <div class="floating-card floating-card-two"><i class="fa-solid fa-star"></i> Premium UI/UX</div>
+        </div>
+    </div>
+</section>
+
+<section class="logo-strip-section partner-marquee-section">
+    <div class="container">
+        <div class="logo-strip-title">
+            Trusted by growing businesses, restaurants, startups and service brands
+        </div>
+    </div>
+
+    <div class="partner-marquee">
+        <div class="partner-track partner-track-left">
+            {% for partner in partners %}
+                <div class="logo-pill">
+                    <img src="{{ partner.logo.url }}" alt="{{ partner.name }}">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="partner-marquee">
+        <div class="partner-track partner-track-right">
+            {% for partner in partners %}
+                <div class="logo-pill">
+                    <img src="{{ partner.logo.url }}" alt="{{ partner.name }}">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="about-premium-section">
+    <div class="container split-grid">
+        <div class="image-stack" data-aos="fade-right">
+            <img class="image-main" src="{% static 'images/about.jpg' %}" alt="Getellaam team and digital solutions">
+            <div class="image-badge"><strong>Creative + Code</strong><span>Strategy-led execution</span></div>
+        </div>
+        <div class="section-copy" data-aos="fade-left">
+            <span class="section-kicker">About Getellaam</span>
+            <h2>{% if company and company.about_title %}{{ company.about_title }}{% else %}A digital partner for brands that want to look professional and grow confidently.{% endif %}</h2>
+            <p>
+                {% if company and company.about_description %}
+                    {{ company.about_description }}
+                {% else %}
+                    We bring together brand thinking, modern interface design, clean development and digital marketing support.
+                    Our focus is simple: make your business look credible, work smoothly online and convert visitors into enquiries.
+                {% endif %}
+            </p>
+            <div class="feature-list">
+                <div><i class="fa-solid fa-circle-check"></i> Business-focused website strategy</div>
+                <div><i class="fa-solid fa-circle-check"></i> Modern, responsive and SEO-friendly frontend</div>
+                <div><i class="fa-solid fa-circle-check"></i> Long-term support after launch</div>
+            </div>
+            <a href="{% url 'about' %}" class="btn btn-dark">Know More About Us</a>
+        </div>
+    </div>
+</section>
+
+<section class="services-premium-section">
+    <div class="container">
+        <div class="section-heading left-heading" data-aos="fade-up">
+            <span class="section-kicker">What We Provide</span>
+            <h2>Complete digital services for your brand’s next stage.</h2>
+            <p>From company websites to custom software, we build the systems your business needs to present, sell and scale.</p>
+        </div>
+
+        <div class="services-premium-grid">
+            {% for service in featured_services %}
+                <article class="service-premium-card" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
+                    <div class="service-icon"><i class="{{ service.icon_class }}"></i></div>
+                    <h3>{{ service.title }}</h3>
+                    <p>{{ service.short_description }}</p>
+                    <a href="{% url 'service_detail' service.slug %}">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
+            {% empty %}
+                <article class="service-premium-card" data-aos="fade-up">
+                    <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h3>Website Design & Development</h3>
+                    <p>Premium, mobile-first websites that create a strong first impression and generate enquiries.</p>
+                    <a href="{% url 'services' %}">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
+                <article class="service-premium-card" data-aos="fade-up">
+                    <div class="service-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+                    <h3>E-commerce Solutions</h3>
+                    <p>Online selling platforms with clean product presentation and smooth customer journeys.</p>
+                    <a href="{% url 'services' %}">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
+                <article class="service-premium-card" data-aos="fade-up">
+                    <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>Digital Marketing</h3>
+                    <p>Marketing support designed to increase reach, visibility and quality leads.</p>
+                    <a href="{% url 'services' %}">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
+                <article class="service-premium-card" data-aos="fade-up">
+                    <div class="service-icon"><i class="fa-solid fa-gears"></i></div>
+                    <h3>Custom Software</h3>
+                    <p>CRM, booking, dashboard and automation systems tailored for your operations.</p>
+                    <a href="{% url 'services' %}">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="portfolio-premium-section">
+    <div class="container">
+        <div class="section-heading center-heading" data-aos="fade-up">
+            <span class="section-kicker">Latest Works</span>
+            <h2>Websites and digital products crafted with clarity.</h2>
+            <p>A preview of our digital design direction, business websites and product interfaces.</p>
+        </div>
+        <div class="portfolio-masonry">
+            {% for project in featured_projects|slice:":6" %}
+                <a href="{% url 'portfolio_detail' project.slug %}" class="portfolio-tile" data-aos="zoom-in">
+                    {% if project.image %}<img src="{{ project.image.url }}" alt="{{ project.title }}">{% else %}<img src="{% static 'images/portfolio/work' %}{{ forloop.counter }}.webp" alt="{{ project.title }}">{% endif %}
+                    <div class="portfolio-overlay"><span>{{ project.category }}</span><h3>{{ project.title }}</h3></div>
+                </a>
+            {% empty %}
+                {% for i in "123456" %}
+                    <a href="{% url 'portfolio' %}" class="portfolio-tile" data-aos="zoom-in">
+                        <img src="{% static 'images/portfolio/work' %}{{ forloop.counter }}.webp" alt="Portfolio work">
+                        <div class="portfolio-overlay"><span>Digital Project</span><h3>Business Website</h3></div>
+                    </a>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        <div class="section-action" data-aos="fade-up"><a href="{% url 'portfolio' %}" class="btn btn-primary">View All Projects</a></div>
+    </div>
+</section>
+
+<section class="process-premium-section">
+    <div class="container process-grid-premium">
+        <div class="section-copy" data-aos="fade-right">
+            <span class="section-kicker">Our Approach</span>
+            <h2>We don’t just design screens. We build a complete digital presence.</h2>
+            <p>Every project is handled through a clear workflow, so your website looks premium, loads fast and supports your business goals.</p>
+        </div>
+        <div class="timeline-cards" data-aos="fade-left">
+            <div class="timeline-card"><span>01</span><h3>Discover</h3><p>Understand your business, audience, services and competitors.</p></div>
+            <div class="timeline-card"><span>02</span><h3>Design</h3><p>Create a premium visual direction with strong content hierarchy.</p></div>
+            <div class="timeline-card"><span>03</span><h3>Develop</h3><p>Build responsive, fast and easy-to-manage pages.</p></div>
+            <div class="timeline-card"><span>04</span><h3>Launch & Support</h3><p>Deploy, monitor and improve your digital presence over time.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="portfolio-preview">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span>Our Portfolio</span>
+            <h2>See Our Creative Work in Action</h2>
+        </div>
+
+        <div class="portfolio-showcase-grid">
+            <div class="portfolio-showcase-card" data-aos="zoom-in" data-aos-delay="100">
+                <img src="{% static 'images/portfolio/work1.webp' %}" alt="Portfolio Work">
+            </div>
+
+            <div class="portfolio-showcase-card" data-aos="zoom-in" data-aos-delay="200">
+                <img src="{% static 'images/portfolio/work2.webp' %}" alt="Portfolio Work">
+            </div>
+
+            <div class="portfolio-showcase-card" data-aos="zoom-in" data-aos-delay="300">
+                <img src="{% static 'images/portfolio/work3.webp' %}" alt="Portfolio Work">
+            </div>
+
+            <div class="portfolio-showcase-card" data-aos="zoom-in" data-aos-delay="100">
+                <img src="{% static 'images/portfolio/work4.webp' %}" alt="Portfolio Work">
+            </div>
+
+            <div class="portfolio-showcase-card" data-aos="zoom-in" data-aos-delay="200">
+                <img src="{% static 'images/portfolio/work5.webp' %}" alt="Portfolio Work">
+            </div>
+
+            <div class="portfolio-showcase-card" data-aos="zoom-in" data-aos-delay="300">
+                <img src="{% static 'images/portfolio/work6.webp' %}" alt="Portfolio Work">
+            </div>
+
+            <div class="portfolio-showcase-card" data-aos="zoom-in" data-aos-delay="100">
+                <img src="{% static 'images/portfolio/work7.webp' %}" alt="Portfolio Work">
+            </div>
+
+            <div class="portfolio-showcase-card" data-aos="zoom-in" data-aos-delay="200">
+                <img src="{% static 'images/portfolio/work8.webp' %}" alt="Portfolio Work">
+            </div>
+
+            <div class="portfolio-showcase-card" data-aos="zoom-in" data-aos-delay="300">
+                <img src="{% static 'images/portfolio/work9.webp' %}" alt="Portfolio Work">
+            </div>
+
+            <div class="portfolio-showcase-card" data-aos="zoom-in" data-aos-delay="100">
+                <img src="{% static 'images/portfolio/work10.webp' %}" alt="Portfolio Work">
+            </div>
+        </div>
+
+        <div class="section-action" data-aos="fade-up">
+            <a href="{% url 'portfolio' %}" class="btn btn-primary">View All Projects</a>
+        </div>
+    </div>
+</section>
+
+<section class="stats-premium-section">
+    <div class="container stats-premium-grid">
+        <div class="stat-premium"><h3 class="counter" data-target="{% if company and company.years_of_experience %}{{ company.years_of_experience }}{% else %}5{% endif %}">0</h3><p>Years Experience</p></div>
+        <div class="stat-premium"><h3 class="counter" data-target="{% if company and company.projects_completed %}{{ company.projects_completed }}{% else %}1000{% endif %}">0</h3><p>Projects Delivered</p></div>
+        <div class="stat-premium"><h3 class="counter" data-target="{% if company and company.happy_clients %}{{ company.happy_clients }}{% else %}5000{% endif %}">0</h3><p>Happy Clients</p></div>
+        <div class="stat-premium"><h3>24/7</h3><p>Support Mindset</p></div>
+    </div>
+</section>
+
+<section class="testimonial-premium-section">
+    <div class="container">
+        <div class="section-heading center-heading" data-aos="fade-up">
+            <span class="section-kicker">Client Words</span>
+            <h2>Built for trust, quality and long-term relationships.</h2>
+        </div>
+        <div class="swiper testimonialSwiper" data-aos="fade-up">
+            <div class="swiper-wrapper">
+                {% for testimonial in featured_testimonials %}
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">{% for i in "12345" %}{% if forloop.counter <= testimonial.rating %}<i class="fa-solid fa-star"></i>{% else %}<i class="fa-regular fa-star"></i>{% endif %}{% endfor %}</div>
+                            <p>“{{ testimonial.feedback }}”</p>
+                            <h4>{{ testimonial.client_name }}</h4>
+                            <span>{% if testimonial.designation %}{{ testimonial.designation }}{% endif %}{% if testimonial.company_name %} · {{ testimonial.company_name }}{% endif %}</span>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="swiper-slide"><div class="testimonial-card"><div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>“Add real client reviews from admin to strengthen trust on the homepage.”</p><h4>Your Client</h4><span>Business Owner</span></div></div>
+                {% endfor %}
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+
+<section class="faq-section premium-faq">
+    <div class="container faq-layout">
+        <div class="section-copy" data-aos="fade-right">
+            <span class="section-kicker">FAQ</span>
+            <h2>Questions before starting?</h2>
+            <p>Here are quick answers for businesses planning a website, software or digital marketing project.</p>
+        </div>
+        <div class="faq-wrapper" data-aos="fade-left">
+            {% for faq in faqs %}
+                <div class="faq-item">
+                    <button class="faq-question"><span>{{ faq.question }}</span><i class="fa-solid fa-plus"></i></button>
+                    <div class="faq-answer"><p>{{ faq.answer }}</p></div>
+                </div>
+            {% empty %}
+                <div class="faq-item active"><button class="faq-question"><span>How can we start a project?</span><i class="fa-solid fa-plus"></i></button><div class="faq-answer"><p>Contact us with your requirement. We will discuss your goals, suggest a direction and share the next steps.</p></div></div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="cta-premium-section">
+    <div class="container cta-premium-card" data-aos="zoom-in">
+        <div>
+            <span class="section-kicker">Let’s build your next digital move</span>
+            <h2>Ready to make your company website look premium and trustworthy?</h2>
+            <p>Share your requirement and let us create a digital presence your business can proudly show.</p>
+        </div>
+        <a href="{% url 'contact' %}" class="btn btn-light">Book Free Consultation <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+</section>
+
+{% endblock %}

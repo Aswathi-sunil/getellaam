@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Job Form | Dashboard{% endblock %}
+
+{% block content %}
+<section class="dashboard-section">
+    <div class="container">
+        <div class="career-form-wrapper">
+            <h2>{% if job %}Edit Job Opening{% else %}Add Job Opening{% endif %}</h2>
+
+            <form method="POST" class="career-form">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <input type="text" name="title" placeholder="Job Title" value="{{ job.title|default:'' }}" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="department" placeholder="Department" value="{{ job.department|default:'' }}">
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="location" placeholder="Location" value="{{ job.location|default:'' }}">
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="job_type" placeholder="Job Type, eg: Full-time / Internship" value="{{ job.job_type|default:'' }}">
+                </div>
+
+                <div class="form-group">
+                    <textarea name="description" rows="5" placeholder="Job Description" required>{{ job.description|default:'' }}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <textarea name="requirements" rows="5" placeholder="Requirements">{{ job.requirements|default:'' }}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="is_active" {% if not job or job.is_active %}checked{% endif %}>
+                        Show on careers page
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    {% if job %}Update Job{% else %}Add Job{% endif %}
+                </button>
+
+                <a href="{% url 'dashboard_job_openings' %}" class="btn btn-outline">Cancel</a>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

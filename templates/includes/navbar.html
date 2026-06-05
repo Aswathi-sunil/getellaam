@@ -1,0 +1,18 @@
+{% load static %}
+<nav class="navbar premium-navbar">
+    <div class="nav-glow-line"></div>
+    <div class="container nav-container">
+        <div class="logo magnetic-logo">
+            <a href="{% url 'home' %}"><img src="{% static 'images/getellaamlogo.png' %}" alt="Getellaam logo"></a>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
+            <li><a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">About</a></li>
+            <li><a href="{% url 'services' %}" class="{% if request.path == '/services/' %}active{% endif %}">Services</a></li>
+            <li><a href="{% url 'portfolio' %}" class="{% if request.path == '/portfolio/' %}active{% endif %}">Portfolio</a></li>
+            <li><a href="{% url 'careers' %}" class="{% if request.path == '/careers/' %}active{% endif %}">Careers</a></li>
+            <li><a href="{% url 'contact' %}" class="nav-cta {% if request.path == '/contact/' %}active{% endif %}">Contact</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></div>
+    </div>
+</nav>

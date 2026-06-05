@@ -1,0 +1,37 @@
+<footer class="footer premium-footer">
+    <div class="footer-orb"></div>
+    <div class="container footer-container">
+        <div class="footer-box footer-brand-card">
+            <h3>{% if company %}{{ company.company_name }}{% else %}Getellaam{% endif %}</h3>
+            <p>{% if company and company.tagline %}{{ company.tagline }}{% else %}We build digital solutions that help brands grow with confidence.{% endif %}</p>
+            <div class="footer-social"><a href="https://www.facebook.com/getellaampvtltd/"><i class="fa-brands fa-facebook"></i></a><a href="https://www.instagram.com/getellaam/?hl=en"><i class="fa-brands fa-instagram"></i></a><a href="https://in.linkedin.com/company/getellaam-software-digitalmarketing-solutions"><i class="fa-brands fa-linkedin"></i></a></div>
+        </div>
+        <div class="footer-box"><h4>Quick Links</h4><ul><li><a href="{% url 'home' %}">Home</a></li><li><a href="{% url 'about' %}">About</a></li><li><a href="{% url 'services' %}">Services</a></li><li><a href="{% url 'portfolio' %}">Portfolio</a></li><li><a href="{% url 'contact' %}">Contact</a></li></ul></div>
+        <div class="footer-contact"><h4>Reach Us</h4><p><i class="fa-solid fa-envelope"></i>{% if company %}{{ company.email }}{% else %}info@getellaam.com{% endif %}</p>
+        <p>
+    <i class="fa-solid fa-phone"></i>
+    <a href="tel:{% if company %}{{ company.phone }}{% else %}+918848647616{% endif %}">
+        {% if company %}
+            {{ company.phone }}
+        {% else %}
+            +91 8848647616
+        {% endif %}
+    </a>
+</p>
+
+<p>
+    <i class="fa-solid fa-location-dot"></i>
+    <a
+        href="https://maps.google.com/?q=Valluvassery Building, Sahodaran Ayyappan Rd, Janatha Junction, Vyttila, Kochi, Ernakulam, Kerala 682019"
+        target="_blank"
+    >
+        {% if company %}
+            {{ company.address }}
+        {% else %}
+            Valluvassery Building, Sahodaran Ayyappan Rd, Janatha Junction, Vyttila, Kochi, Ernakulam, Kerala 682019
+        {% endif %}
+    </a>
+</p>
+        </div>
+    </div><div class="footer-bottom"><p>&copy; 2026 {% if company %}{{ company.company_name }}{% else %}Getellaam{% endif %}. All rights reserved.</p></div>
+</footer>

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Job Openings | Dashboard{% endblock %}
+
+{% block content %}
+<section class="dashboard-section">
+    <div class="container">
+        <h1>Job Openings</h1>
+        <p>Add, edit, or remove careers page job openings.</p>
+
+        <a href="{% url 'add_job_opening' %}" class="btn btn-primary">Add New Job</a>
+
+        <div class="table-wrapper" style="margin-top: 25px;">
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Department</th>
+                        <th>Location</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for job in jobs %}
+                    <tr>
+                        <td>{{ job.title }}</td>
+                        <td>{{ job.department }}</td>
+                        <td>{{ job.location }}</td>
+                        <td>{{ job.job_type }}</td>
+                        <td>
+                            {% if job.is_active %}
+                                Active
+                            {% else %}
+                                Hidden
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'edit_job_opening' job.id %}" class="table-link">Edit</a>
+                            |
+                            <a href="{% url 'delete_job_opening' job.id %}" class="table-link delete-link">Delete</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6">No job openings added yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <br>
+        <a href="{% url 'dashboard' %}" class="btn btn-outline">Back to Dashboard</a>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Leads | Dashboard{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-section">
+    <div class="container">
+        <h1>Leads</h1>
+        <p>All contact enquiries from your website.</p>
+
+        <div class="table-wrapper">
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Subject</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for lead in leads %}
+                        <tr>
+                            <td>{{ lead.full_name }}</td>
+                            <td>{{ lead.email }}</td>
+                            <td>{{ lead.phone }}</td>
+                            <td>{{ lead.subject }}</td>
+                            <td>{{ lead.submitted_on|date:"d M Y" }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="5">No leads found.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a href="{% url 'dashboard' %}" class="btn btn-outline">Back to Dashboard</a>
+        <a href="{% url 'admin_logout' %}" class="btn btn-primary">Logout</a>
+    </div>
+</section>
+
+{% endblock %}

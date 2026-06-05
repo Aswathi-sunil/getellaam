@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Job Applications | Dashboard{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-section">
+    <div class="container">
+        <h1>Job Applications</h1>
+        <p>All applications submitted through the careers page.</p>
+
+        <div class="table-wrapper">
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Job Role</th>
+                        <th>Resume</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for application in jobs %}
+                        <tr>
+                            <td>{{ application.full_name }}</td>
+                            <td>{{ application.email }}</td>
+                            <td>{{ application.phone }}</td>
+                            <td>{{ application.job.title }}</td>
+                            <td>
+                                {% if application.resume %}
+                                    <a href="{{ application.resume.url }}" target="_blank" class="table-link">
+                                        View Resume
+                                    </a>
+                                {% else %}
+                                    No resume
+                                {% endif %}
+                            </td>
+                            <td>{{ application.applied_on|date:"d M Y" }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="6">No job applications found.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a href="{% url 'dashboard' %}" class="btn btn-outline">Back to Dashboard</a>
+        <a href="{% url 'admin_logout' %}" class="btn btn-primary">Logout</a>
+    </div>
+</section>
+
+{% endblock %}

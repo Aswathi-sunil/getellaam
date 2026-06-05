@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Getellaam{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=smartmotion3">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <div id="pageLoader">
+    <div class="loader-content">
+        <div class="loader-circle"></div>
+        <p>Getellaam</p>
+    </div>
+</div>
+
+    {% include 'includes/navbar.html' %}
+
+    {% if messages %}
+    <div class="messages-wrapper">
+        <div class="container">
+            {% for message in messages %}
+                <div class="alert-message">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+    {% block content %}
+    {% endblock %}
+
+    <a href="https://wa.me/918848647616" class="whatsapp-float" target="_blank">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+    {% include 'includes/footer.html' %}
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="{% static 'js/main.js' %}?v=smartmotion4"></script>
+
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
+</script>
+</body>
+</html>
