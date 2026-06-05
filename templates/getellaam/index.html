@@ -72,10 +72,10 @@
     <div class="partner-marquee">
         <div class="partner-track partner-track-right">
             {% for partner in partners %}
-                <div class="logo-pill">
-                    <img src="{% static 'images/partners/' %}{{ partner.logo }}" alt="{{ partner.name }}">
-                </div>
-            {% endfor %}
+            <div class="logo-pill">
+                <img src="{% static 'images/' %}{{ partner.logo }}" alt="{{ partner.name }}">
+            </div>
+        {% endfor %}
         </div>
     </div>
 </section>
