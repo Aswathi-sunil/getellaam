@@ -73,7 +73,7 @@
         <div class="partner-track partner-track-right">
             {% for partner in partners %}
                 <div class="logo-pill">
-                    <img src="{{ partner.logo.url }}" alt="{{ partner.name }}">
+                    <img src="{% static 'images/partners/' %}{{ partner.logo }}" alt="{{ partner.name }}">
                 </div>
             {% endfor %}
         </div>
