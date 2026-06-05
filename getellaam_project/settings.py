@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-#4-027r)-zy3m&(1&)0ss!4yee5u_s(ezr4#fjhtg0_q0qbycp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['getellaam.com', 'www.getellaam.com','localhost','127.0.0.1','13.55.199.136']
+ALLOWED_HOSTS = ['getellaam.com', 'www.getellaam.com','localhost','127.0.0.1','13.55.199.136',"getellaam.onrender.com"]
 
 
 
