@@ -164,9 +164,9 @@
             {% for project in featured_projects|slice:":6" %}
                 <a href="{% url 'portfolio_detail' project.slug %}" class="portfolio-tile" data-aos="zoom-in">
                     {% if project.image %}
-                    <img src="{% static 'images/portfolio/' %}{{ project.image }}" alt="{{ project.title }}">
+                    <img src="/static/images/portfolio/{{ project.image }}" alt="{{ project.title }}">
                     {% else %}
-                    <img src="{% static 'images/portfolio/work' %}{{ forloop.counter }}.webp" alt="{{ project.title }}">
+                    <img src="/static/images/portfolio/work{{ forloop.counter }}.webp" alt="{{ project.title }}">
                     {% endif %}
                     <div class="portfolio-overlay"><span>{{ project.category }}</span><h3>{{ project.title }}</h3></div>
                 </a>
