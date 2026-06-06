@@ -163,7 +163,11 @@
         <div class="portfolio-masonry">
             {% for project in featured_projects|slice:":6" %}
                 <a href="{% url 'portfolio_detail' project.slug %}" class="portfolio-tile" data-aos="zoom-in">
-                    {% if project.image %}<img src="{{ project.image.url }}" alt="{{ project.title }}">{% else %}<img src="{% static 'images/portfolio/work' %}{{ forloop.counter }}.webp" alt="{{ project.title }}">{% endif %}
+                    {% if project.image %}
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                    {% else %}
+                    <img src="{% static 'images/portfolio/work' %}{{ forloop.counter }}.webp" alt="{{ project.title }}">
+                    {% endif %}
                     <div class="portfolio-overlay"><span>{{ project.category }}</span><h3>{{ project.title }}</h3></div>
                 </a>
             {% empty %}
@@ -204,43 +208,43 @@
 
         <div class="portfolio-showcase-grid">
             <div class="portfolio-showcase-card" data-aos="zoom-in" data-aos-delay="100">
-                <img src="{% static 'images/portfolio/work1.webp' %}" alt="Portfolio Work">
+                <img src="{% static 'images/showcase/work1.webp' %}" alt="Portfolio Work">
             </div>
 
             <div class="portfolio-showcase-card" data-aos="zoom-in" data-aos-delay="200">
-                <img src="{% static 'images/portfolio/work2.webp' %}" alt="Portfolio Work">
+                <img src="{% static 'images/showcase/work2.webp' %}" alt="Portfolio Work">
             </div>
 
             <div class="portfolio-showcase-card" data-aos="zoom-in" data-aos-delay="300">
-                <img src="{% static 'images/portfolio/work3.webp' %}" alt="Portfolio Work">
+                <img src="{% static 'images/showcase/work3.webp' %}" alt="Portfolio Work">
             </div>
 
             <div class="portfolio-showcase-card" data-aos="zoom-in" data-aos-delay="100">
-                <img src="{% static 'images/portfolio/work4.webp' %}" alt="Portfolio Work">
+                <img src="{% static 'images/showcase/work4.webp' %}" alt="Portfolio Work">
             </div>
 
             <div class="portfolio-showcase-card" data-aos="zoom-in" data-aos-delay="200">
-                <img src="{% static 'images/portfolio/work5.webp' %}" alt="Portfolio Work">
+                <img src="{% static 'images/showcase/work5.webp' %}" alt="Portfolio Work">
             </div>
 
             <div class="portfolio-showcase-card" data-aos="zoom-in" data-aos-delay="300">
-                <img src="{% static 'images/portfolio/work6.webp' %}" alt="Portfolio Work">
+                <img src="{% static 'images/showcase/work6.webp' %}" alt="Portfolio Work">
             </div>
 
             <div class="portfolio-showcase-card" data-aos="zoom-in" data-aos-delay="100">
-                <img src="{% static 'images/portfolio/work7.webp' %}" alt="Portfolio Work">
+                <img src="{% static 'images/showcase/work7.webp' %}" alt="Portfolio Work">
             </div>
 
             <div class="portfolio-showcase-card" data-aos="zoom-in" data-aos-delay="200">
-                <img src="{% static 'images/portfolio/work8.webp' %}" alt="Portfolio Work">
+                <img src="{% static 'images/showcase/work8.webp' %}" alt="Portfolio Work">
             </div>
 
             <div class="portfolio-showcase-card" data-aos="zoom-in" data-aos-delay="300">
-                <img src="{% static 'images/portfolio/work9.webp' %}" alt="Portfolio Work">
+                <img src="{% static 'images/showcase/work9.webp' %}" alt="Portfolio Work">
             </div>
 
             <div class="portfolio-showcase-card" data-aos="zoom-in" data-aos-delay="100">
-                <img src="{% static 'images/portfolio/work10.webp' %}" alt="Portfolio Work">
+                <img src="{% static 'images/showcase/work10.webp' %}" alt="Portfolio Work">
             </div>
         </div>
 
